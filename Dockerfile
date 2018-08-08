@@ -47,15 +47,7 @@ RUN ./server.sh prepare
 
 # OpenShift will run the server using a randomly generated uid
 RUN chmod -R a+w /opt/datasynapse/manager-data
-RUN curl http://lin32vm053.rofa.tibco.com:3000/gists/415/blobs/ed1a2ef8d99f6e4e54daf51738b98953463f48b4/install.silent > install.silent
-RUN ./install.sh install.silent > ./stdout.txt 2> ./stderr.txt
 
-#COPY config-and-run.sh /opt/datasynapse/manager
-#RUN /bin/bash -c <(curl -s http://lin32vm053.rofa.tibco.com:3000/gists/414/blobs/6205a116b4d48f4eaf94f011dc887f5f4020b7b2/config-and-run.sh | tr -d '\r')
-#RUN curl -fsSL http://lin32vm053.rofa.tibco.com:3000/gists/414/blobs/095ebb6431dc11fa4b4f995b695c680424c5b8c5/config-and-run.sh | tr -d '\r' > config-and-run.sh
-#RUN chmod +x config-and-run.sh
-#RUN ./config-and-run.sh
-
-CMD cd /opt/datasynapse/manager && ./server.sh start && tail -F /etc/hosts
+CMD cd /opt/datasynapse/manager && ./server.sh start && sleep infinity
 # CMD cd /opt/datasynapse/YourScriptFolder && ./YourDeplomentScript.sh
 # CMD bash
